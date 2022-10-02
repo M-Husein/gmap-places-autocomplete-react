@@ -50,6 +50,12 @@ fieldset {
   white-space: pre-wrap;
 }
 
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .m-0 {
   margin: 0;
 }
@@ -86,4 +92,9 @@ fieldset {
   height: 90px;
   align-items: center;
   justify-content: center;
+}
+
+input[type="search" i]::-webkit-search-cancel-button {
+  opacity: 1;
+  cursor: pointer;
 }

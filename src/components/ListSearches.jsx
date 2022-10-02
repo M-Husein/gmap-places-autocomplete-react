@@ -26,8 +26,7 @@ import dateFormat from '../utils/dateFormat';
 import { getListSearch, getItemDetail, deleteListItem } from '../store/actions/list';
 
 function ListSearches({
-  open,
-  onCollapse,
+  onClickItem,
   ...props
 }){
   const [openList, setOpenList] = useState(false);
@@ -55,6 +54,11 @@ function ListSearches({
 
   const onCloseDialog = () => {
     setOpenDialogDelete(false);
+  }
+
+  const onClickItemDetail = (item) => {
+    props.getItemDetail(item);
+    onClickItem?.(item);
   }
 
   const parseDate = (date) => (
@@ -100,7 +104,7 @@ function ListSearches({
                       PopperProps={{ disablePortal: true }}
                       title="View"
                     >
-                      <IconButton onClick={() => props.getItemDetail(item)} edge="end" size="small" aria-label="view">
+                      <IconButton onClick={() => onClickItemDetail(item)} edge="end" size="small" aria-label="view">
                         <VisibilityIcon />
                       </IconButton>
                     </Tooltip>

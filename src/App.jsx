@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useCallback } from 'react';
+import { useRef, useState, useCallback } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
@@ -160,10 +160,14 @@ function App(props) {
     });
   }, [gmap]);
 
-  useEffect(() => {
-    const { id, title, address, geometry } = props.selectedTaskToEditOrAdd;
+  const onErrorGmap = (err) => {
+    setAlertMsg({ type: "error_load_gmap", msg: err });
+  }
+
+  const onClickItem = (val) => {
     const infoWin = infoWindowRef.current;
-    if(infoWin && id && title){
+    if(infoWin){
+      const { title, address, geometry } = val;
       infoWin.close();
       markerRef.current.setVisible(false);
 
@@ -182,10 +186,6 @@ function App(props) {
       infoWin.content.children["place-address"].textContent = `${address}\n\nLatitude     : ${geometry.location.lat} °\nLongitude  : ${geometry.location.lng} °`;
       infoWin.open(map, markerRef.current);
     }
-  }, [props.selectedTaskToEditOrAdd]);
-
-  const onErrorGmap = (err) => {
-    setAlertMsg({ type: "error_load_gmap", msg: err });
   }
 
   return (
@@ -194,6 +194,7 @@ function App(props) {
         inRef={formRef}
         loading={!!gmap}
         inputSearchRef={inputSearchRef}
+        onClickItem={onClickItem}
       />
 
       <Gmap

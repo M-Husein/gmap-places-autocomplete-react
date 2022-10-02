@@ -1,4 +1,3 @@
-import { forwardRef } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Stack from '@mui/material/Stack';
@@ -31,6 +30,7 @@ const MapControls = ({
   inRef,
   loading,
   inputSearchRef,
+  onClickItem,
 }) => {
   return (
     <Card
@@ -81,10 +81,11 @@ const MapControls = ({
             placeholder=""
             size="small"
             variant="outlined"
+            inputProps={{ type: "search", className: "text-ellipsis" }}
           />
         </Stack>
 
-        <ListSearches />
+        <ListSearches onClickItem={onClickItem} />
       </CardContent>
     </Card>
 	);
