@@ -40,7 +40,7 @@ export default function Gmap({
   return (
     <>
       <Backdrop
-        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{ zIndex: 1000002, color: '#fff', cursor: 'wait' }}
         open={gmapApi === "loading"}
         hidden={gmapApi === "ready"}
       >
@@ -48,7 +48,7 @@ export default function Gmap({
       </Backdrop>
 
       <div ref={mapRef} id="gmap">
-        {gmapApi === "ready" && <SvgMap />}
+        {gmapApi === "loading" && <SvgMap />}
       </div>
     </>
   )
