@@ -63,8 +63,8 @@ fieldset {
   max-height: calc(100vh - 22px) !important;
 }
 
-.collapseList.MuiCollapse-hidden,
-#infowindow-content {
+#infowindow-content,
+.collapseList.MuiCollapse-hidden {
   display: none;
 }
 

@@ -15,7 +15,6 @@ export default function useScript(src) {
       if (!script) {
         script = document.createElement("script");
         script.async = true;
-        // script.defer = true;
         script.src = src;
 
         script.setAttribute("data-status", "loading");

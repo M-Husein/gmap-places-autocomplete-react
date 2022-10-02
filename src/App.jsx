@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useCallback, Fragment } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
@@ -221,7 +221,7 @@ function App(props) {
         onClose={onCloseAlert}
         message={alertMsg?.msg || ""}
         action={
-          <Fragment>
+          <>
             <IconButton
               size="small"
               aria-label="close"
@@ -230,7 +230,7 @@ function App(props) {
             >
               <CloseIcon fontSize="small" />
             </IconButton>
-          </Fragment>
+          </>
         }
       />
     </>
